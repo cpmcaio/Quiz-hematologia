@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Hemato-Lógica – LAHHEM</title>
+    <meta name="description"
+        content="Teste seus conhecimentos sobre doação de sangue no estilo Tinder! Arraste os cards e descubra mitos e verdades." />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blood: {
+                            DEFAULT: '#8B0000',
+                            dark: '#6B0000',
+                            light: '#B22222',
+                        },
+                    },
+                    fontFamily: {
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="font-display bg-blood min-h-screen flex flex-col items-center justify-center p-4 select-none">
+    <!-- ===================== QUIZ SECTION ===================== -->
+    <section id="quiz-section" aria-label="Seção do Quiz">
+
+        <!-- App Header -->
+        <header class="text-center mb-20">
+            <h1 class="text-white text-2xl font-black tracking-widest uppercase">
+                Mito ou Verdade?
+            </h1>
+            <p class="text-red-200 text-sm mt-1">
+                Arraste ou clique para responder
+            </p>
+        </header>
+
+        <div id="card-stack" class="relative w-[340px] md:w-[600px] h-[380px] md:h-[360px]" aria-live="polite"
+            aria-label="Pilha de cards do quiz">
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-between items-center w-[260px] mt-10 mx-auto" role="group"
+            aria-label="Botões de resposta">
+            <!-- Falso (Esquerda / Dislike) -->
+            <button id="btn-false" class="action-btn bg-red-600 hover:bg-red-700 active:scale-90"
+                aria-label="Falso – arrastar para a esquerda">
+                <img src="./assets/dislike-icon.png" alt="Ícone de falso" class="w-9 h-9 object-contain" />
+            </button>
+
+            <!-- Contador de cards -->
+            <span id="card-counter" class="text-white text-sm font-bold opacity-80" aria-live="polite"></span>
+
+            <!-- Verdadeiro (Direita / Like) -->
+            <button id="btn-true" class="action-btn bg-green-600 hover:bg-green-700 active:scale-90"
+                aria-label="Verdadeiro – arrastar para a direita">
+                <img src="./assets/like-icon.png" alt="Ícone de verdadeiro" class="w-9 h-9 object-contain" />
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- ==================== RESULT SECTION ==================== -->
+    <section id="result-section" class="hidden flex-col items-center w-full max-w-lg mx-auto"
+        aria-label="Seção de resultados">
+
+        <!-- Card externo branco que envolve todo o conteúdo -->
+        <div class="bg-white rounded-3xl shadow-2xl w-full p-6 flex flex-col items-center gap-4">
+
+            <!-- Logo (sem card próprio, vive no topo do card externo) -->
+            <img src="./assets/logolahhem.png" alt="Logo LAHHEM" class="w-40 drop-shadow-md" />
+
+            <!-- Score Summary — card translúcido (vermelho escuro) -->
+            <div class="bg-blood/90 backdrop-blur-sm rounded-2xl p-5 w-full text-center border border-blood/30">
+                <p class="text-5xl font-black mb-1 text-white" id="score-text"></p>
+                <p class="text-red-200 text-sm font-semibold" id="score-subtext"></p>
+            </div>
+
+            <!-- Gabarito List — itens translúcidos -->
+            <ul id="gabarito-list" class="w-full space-y-2 max-h-64 overflow-y-auto pr-1"
+                aria-label="Gabarito de respostas"></ul>
+
+            <!-- Play Again Button -->
+            <button id="btn-restart"
+                class="bg-blood text-white font-black text-lg uppercase tracking-wider py-3 px-10 rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 w-full"
+                aria-label="Jogar novamente">
+                🔁 Jogar Novamente
+            </button>
+
+        </div><!-- /card externo -->
+
+    </section>
+    <!-- ================== END RESULT SECTION ================== -->
+
+    <!-- App Logic -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
