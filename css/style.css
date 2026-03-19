@@ -135,6 +135,16 @@ body {
     transform: rotate(-12deg);
 }
 
+/* Mobile: diminui o stamp para não ficar atrás do mascote */
+@media (max-width: 767px) {
+    .swipe-label {
+        font-size:    1rem;
+        border-width: 3px;
+        padding:      .1rem .5rem;
+        top:          6.5rem; /* abaixo do mascot-spacer (95px ≈ 6rem) */
+    }
+}
+
 
 .quiz-card.next-card {
     transform: scale(.95) translateY(12px);
